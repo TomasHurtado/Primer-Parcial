@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1558043728 source:/home/alumno/Primer Parcial/Primer parcial/instrumento.c
+
+1558045717 source:/home/alumno/Primer Parcial/Primer parcial/musico.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"musico.h"
+
+1558044323 /home/alumno/Primer Parcial/Primer parcial/utn.h
+
+1558045149 /home/alumno/Primer Parcial/Primer parcial/musico.h
+
