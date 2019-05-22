@@ -126,7 +126,7 @@ int orquesta_alta(Orquesta array[], int size, int* contadorID)
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se elimina el elemento exitosamente
 *
 */
-int orquesta_baja(Orquesta array[], int sizeArray)
+int orquesta_baja(Orquesta array[], int sizeArray, int* IDborrada)
 {
     int retorno=-1;
     int posicion;
@@ -140,6 +140,7 @@ int orquesta_baja(Orquesta array[], int sizeArray)
         }
         else
         {
+            *IDborrada = id;
             array[posicion].isEmpty=1;
             array[posicion].idUnico=0;
             array[posicion].tipo=0;
@@ -246,3 +247,4 @@ int orquesta_listar(Orquesta array[], int size)
     }
     return retorno;
 }
+

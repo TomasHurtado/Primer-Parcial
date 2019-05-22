@@ -12,3 +12,51 @@
 
 1558045149 /home/alumno/Primer Parcial/Primer parcial/musico.h
 
+1558496461 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\instrumento.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"instrumento.h"
+
+1558494942 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\utn.h
+
+1558496461 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\instrumento.h
+
+1558494942 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\main.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"musico.h"
+	"instrumento.h"
+	"orquesta.h"
+
+1558508051 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\musico.h
+	"orquesta.h"
+	"instrumento.h"
+
+1558508398 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\orquesta.h
+
+1558508055 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\musico.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"musico.h"
+	"orquesta.h"
+	"instrumento.h"
+
+1558508386 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\orquesta.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"orquesta.h"
+
+1558494942 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

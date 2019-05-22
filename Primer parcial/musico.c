@@ -5,6 +5,9 @@
 #include "musico.h"
 #include "orquesta.h"
 #include "instrumento.h"
+#define CANTORQUEST 50
+#define CANTINSTRUM 20
+#define CANTMUSIC 1000
 
 
 /** \brief  To indicate that all position in the array are empty,
@@ -98,10 +101,13 @@ int musico_buscarID(Musico array[], int size, int valorBuscado, int* posicion)
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no hay posiciones vacias] - (0) si se agrega un nuevo elemento exitosamente
 *
 */
-int musico_alta(Musico array[], int size, int* contadorID)
+int musico_alta(Musico array[],Orquesta arrayOrquesta[], Instrumento arrayInstrumento[], int size, int* contadorID)
 {
     int retorno=-1;
     int posicion;
+    int aux;
+    int buffer;
+
     if(array!=NULL && size>0 && contadorID!=NULL)
     {
         if(musico_buscarEmpty(array,size,&posicion)==-1)
@@ -110,22 +116,59 @@ int musico_alta(Musico array[], int size, int* contadorID)
         }
         else
         {
-            (*contadorID)++;
-            array[posicion].idUnico=*contadorID;
-            array[posicion].isEmpty=0;
+
+
+            if(utn_getUnsignedInt("Ingrese ID de la orquesta","\nError",1,sizeof(int),1,10000,1,&buffer))
+            {
+                printf("\nID de Orquesta invalida.\n");
+                return retorno;
+            }
+            else
+            {
+                 if(!orquesta_buscarID(arrayOrquesta, 50, buffer, &aux))
+                {
+                    array[posicion].idOrquesta = buffer;
+                }else
+                {
+                    return retorno;
+                }
+            }
+            if(utn_getUnsignedInt("\nIngrese el ID del Instrumento :\n","\nID Invalida.\n",1,sizeof(int),1,10,1,&buffer))
+            {
+                printf("\nID de Instrumento invalido.\n");
+                return retorno;
+            }
+            else
+            {
+                if(!instrumento_buscarID(arrayInstrumento, 20, buffer, &aux))
+                {
+                    array[posicion].idInstrumento = buffer;
+                }else
+                {
+                    printf("\nID de Instrumento no encontrado.\n");
+                    return retorno;
+                }
+
             utn_getName("Nombre\n: ","\nError",1,TEXT_SIZE,1,array[posicion].nombre);
             utn_getTexto("Apellido\n: ","\nError",1,TEXT_SIZE,1,array[posicion].apellido);
             utn_getUnsignedInt("Edad: ","\nError",1,sizeof(int),1,1000,1,&array[posicion].edad);
-            utn_getUnsignedInt("ID Orquesta: ","\nError",1,sizeof(int),1,10000,1,&array[posicion].idOrquesta);
-            utn_getUnsignedInt("ID Instrumento: ","\nError",1,sizeof(int),1,10000,1,&array[posicion].idInstrumento);
-            printf("\n Posicion: %d\n ID: %d\n  nombre: %s\n apellido: %s\n edad: %d\n ID orquesta: %d\n ID instrumento: %d",
-                   posicion, array[posicion].idUnico,array[posicion].nombre,array[posicion].apellido,array[posicion].edad,array[posicion].idOrquesta,array[posicion].idInstrumento);
-            retorno=0;
-        }
-    }
-    return retorno;
-}
 
+
+            (*contadorID)++;
+            array[posicion].idUnico=*contadorID;
+            array[posicion].isEmpty=0;
+
+
+
+            printf("\n Posicion: %d\n ID: %d\n  nombre: %s\n apellido: %s\n edad: %d\n ID orquesta: %d\n ID instrumento: %d",
+                       posicion, array[posicion].idUnico,array[posicion].nombre,array[posicion].apellido,array[posicion].edad,array[posicion].idOrquesta,array[posicion].idInstrumento);
+                retorno=0;
+            }
+        }
+        return retorno;
+    }
+     return retorno;
+}
 //*****************************************
 //Baja valor unico
 /** \brief Borra un elemento del array por ID
@@ -244,6 +287,31 @@ int musico_listar(Musico array[], int size)                      //cambiar music
                        array[i].idUnico,array[i].nombre,array[i].apellido,array[i].edad,array[i].idOrquesta,array[i].idInstrumento);
         }
         retorno=0;
+    }
+    return retorno;
+}
+
+
+int musico_bajaPorOrquesta(Musico array[], int sizeArray, int idAEliminar)
+{
+    int retorno=-1;
+    int i;
+    if(array!=NULL && sizeArray>0)
+    {
+        for(i=0;i<sizeArray;i++)
+        {
+            if(array[i].idOrquesta == idAEliminar)
+            {
+                array[i].isEmpty=1;
+                array[i].idUnico=0;
+                array[i].edad=0;
+                strcpy(array[i].nombre,"");
+                strcpy(array[i].apellido,"");
+                array[i].idOrquesta = 0;
+                array[i].idInstrumento = 0;
+                retorno=0;
+            }
+        }
     }
     return retorno;
 }

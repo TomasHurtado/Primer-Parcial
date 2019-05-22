@@ -16,6 +16,7 @@ int main()
     int contadorIdOrquesta=0;
     int contadorIdMusico=0;
     int contadorIdInstrumento=0;
+    int aux;
 
     Orquesta arrayOrquesta[CANTORQUEST];
     Musico arrayMusico[CANTMUSIC];
@@ -25,9 +26,71 @@ int main()
     musico_Inicializar(arrayMusico,CANTMUSIC);
     instrumento_Inicializar(arrayInstrumento,CANTINSTRUM);
 
+
+    //Instrumentos
+    arrayInstrumento[0].idUnico = 1;
+    arrayInstrumento[0].isEmpty = 0;
+    strcpy(arrayInstrumento[0].nombre,"Flauta");
+    arrayInstrumento[0].tipo = 1;
+
+    arrayInstrumento[1].idUnico = 2;
+    arrayInstrumento[1].isEmpty = 0;
+    strcpy(arrayInstrumento[1].nombre,"xilofono");
+    arrayInstrumento[1].tipo = 2;
+
+    arrayInstrumento[2].idUnico = 3;
+    arrayInstrumento[2].isEmpty = 0;
+    strcpy(arrayInstrumento[2].nombre,"piano");
+    arrayInstrumento[2].tipo = 3;
+
+
+    //Hardcode Orquesta
+    arrayOrquesta[0].idUnico = 1;
+    arrayOrquesta[0].isEmpty = 0;
+    strcpy(arrayOrquesta[0].nombre,"Betoven");
+    strcpy(arrayOrquesta[0].lugar,"en casa");
+    arrayOrquesta[0].tipo = 1;
+
+    arrayOrquesta[1].idUnico = 2;
+    arrayOrquesta[1].isEmpty = 0;
+    strcpy(arrayOrquesta[1].nombre,"Mozart");
+    strcpy(arrayOrquesta[1].lugar,"en la playa");
+    arrayOrquesta[1].tipo = 2;
+
+    arrayOrquesta[2].idUnico = 3;
+    arrayOrquesta[2].isEmpty = 0;
+    strcpy(arrayOrquesta[2].nombre,"Pablitolescano");
+    strcpy(arrayOrquesta[2].lugar,"en la calle");
+    arrayOrquesta[2].tipo = 3;
+
+    //Hardcode Musico
+    arrayMusico[0].idUnico = 1;
+    arrayMusico[0].idOrquesta = 1;
+    arrayMusico[0].idInstrumento = 1;
+    arrayMusico[0].isEmpty = 0;
+    strcpy(arrayMusico[0].nombre,"pepe");
+    strcpy(arrayMusico[0].apellido,"guapo");
+    arrayMusico[0].edad = 50;
+
+    arrayMusico[1].idUnico = 2;
+    arrayMusico[1].idOrquesta = 2;
+    arrayMusico[1].idInstrumento = 3;
+    arrayMusico[1].isEmpty = 0;
+    strcpy(arrayMusico[1].nombre,"julian");
+    strcpy(arrayMusico[1].apellido,"soliz");
+    arrayMusico[1].edad = 30;
+
+    arrayMusico[2].idUnico = 3;
+    arrayMusico[2].idOrquesta = 3;
+    arrayMusico[2].idInstrumento = 2;
+    arrayMusico[2].isEmpty = 0;
+    strcpy(arrayMusico[2].nombre,"ricardo");
+    strcpy(arrayMusico[2].apellido,"milos");
+    arrayMusico[2].edad = 75;
+
     do
     {
-        utn_getUnsignedInt("\nOrquestas\n1) Alta orquesta \n2) Eliminar orquesta \n3) Imprimir orquesta \nMusicos\n4)agregar musico \n5)Modificar musicon6)Eliminar musico \n7)Imprimir musicos \ninstrumento\n8) Agregar instrumento \n9)Imprimir instrumento \n10)Salir\n",
+        utn_getUnsignedInt("\nOrquestas\n1) Alta orquesta \n2) Eliminar orquesta \n3) Imprimir orquesta \nMusicos\n4)agregar musico \n5)Modificar musicon\n6)Eliminar musico \n7)Imprimir musicos \ninstrumento\n8) Agregar instrumento \n9)Imprimir instrumento \n10)Salir\n",
                       "\nError",1,sizeof(int),1,11,1,&opcion);
         switch(opcion)
         {
@@ -37,7 +100,10 @@ int main()
                 break;
 
             case 2: //eliminar
-                orquesta_baja(arrayOrquesta,CANTORQUEST);
+                if(!orquesta_baja(arrayOrquesta,CANTORQUEST,&aux))
+                {
+                    musico_bajaPorOrquesta(arrayMusico, CANTMUSIC, aux);
+                }
                 break;
 
             case 3: //imprimir
@@ -47,7 +113,7 @@ int main()
             case 4://alta musico
               if(flad==1 && flag==1)
               {
-                musico_alta(arrayMusico,CANTMUSIC,&contadorIdMusico);
+                musico_alta(arrayMusico,arrayOrquesta,arrayInstrumento,CANTMUSIC,&contadorIdMusico);
               }
               else
               {
