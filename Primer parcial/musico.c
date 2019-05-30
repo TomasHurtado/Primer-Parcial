@@ -10,9 +10,7 @@
 #define CANTMUSIC 1000
 
 
-/** \brief  To indicate that all position in the array are empty,
-*          this function put the flag (isEmpty) in TRUE in all
-*          position of the array
+/** \brief  Incializa el isEmpty en 1 para que indique que este vacio
 * \param array musico Array of musico
 * \param size int Array length
 * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
@@ -32,9 +30,7 @@ int musico_Inicializar(Musico array[], int size)
     return retorno;
 }
 
-//*****************************************
-//Buscar
-//Int
+
 /** \brief Busca el primer lugar vacio en un array
 * \param array musico Array de musico
 * \param size int Tamaño del array
@@ -92,8 +88,7 @@ int musico_buscarID(Musico array[], int size, int valorBuscado, int* posicion)
 
 
 
-//*****************************************
-//Alta
+
 /** \brief Solicita los datos para completar la primer posicion vacia de un array
 * \param array musico Array de musico
 * \param size int Tamaño del array
@@ -169,8 +164,7 @@ int musico_alta(Musico array[],Orquesta arrayOrquesta[], Instrumento arrayInstru
     }
      return retorno;
 }
-//*****************************************
-//Baja valor unico
+
 /** \brief Borra un elemento del array por ID
 * \param array musico Array de musico
 * \param size int Tamaño del array
@@ -206,8 +200,6 @@ int musico_baja(Musico array[], int sizeArray)
 
 
 
-//*****************************************
-//Modificar
 /** \brief Busca un elemento por ID y modifica sus campos
 * \param array musico Array de musico
 * \param size int Tamaño del array
@@ -262,17 +254,13 @@ int musico_modificar(Musico array[], int sizeArray)
     }
 
 
-
-
-//*****************************************
-//Listar
 /** \brief Lista los elementos de un array
 * \param array musico Array de musico
 * \param size int Tamaño del array
-* \return int Return (-1) si Error [largo no valido o NULL pointer] - (0) si se lista exitosamente
+* \return int Return (-1) si da Error [largo no valido o NULL pointer] - (0) si se lista exitosamente
 *
 */
-int musico_listar(Musico array[], int size)                      //cambiar musico
+int musico_listar(Musico array[], int size)
 {
     int retorno=-1;
     int i;
@@ -292,6 +280,14 @@ int musico_listar(Musico array[], int size)                      //cambiar music
 }
 
 
+/** \brief borra musico cuando se da de baja una orquesta
+ *
+ * \param array[] Musico array de Musicos
+ * \param sizeArray int tamaño de array de Musicos
+ * \param idAEliminar int id del musico a eliminar
+ * \return int retorno -1 si da error o no existe el id o 0 si sale todo bien
+ *
+ */
 int musico_bajaPorOrquesta(Musico array[], int sizeArray, int idAEliminar)
 {
     int retorno=-1;
@@ -312,6 +308,92 @@ int musico_bajaPorOrquesta(Musico array[], int sizeArray, int idAEliminar)
                 retorno=0;
             }
         }
+    }
+    return retorno;
+}
+
+/** \brief cuenta cuantos musicos hay cargados
+ *
+ * \param array[] Musico array de Musicos
+ * \param size int tamaño del array de Musicos
+ * \return cantidad de musicos
+ *
+ */
+int musico_cantidadDeMusicos(Musico array[], int size)
+{
+    int i;
+    int cantidadDeMusicos=0;
+    for (i=0;i<size;i++)
+    {
+        if (!array[i].isEmpty)
+        {
+            cantidadDeMusicos++;
+        }
+    }
+    return cantidadDeMusicos;
+}
+
+
+
+/** \brief ordena alfabeticamente a los musicos por apellido
+ *
+ * \param array[] Musico array de Musicos
+ * \param size int tamaño del array de Musicos
+ * \return int -1 si no se pudo ordenar o da error y 0 si se ordeno correctamente
+ *
+ */
+int musico_ordenarPorApellido(Musico array[],int size)
+{
+    int retorno=-1;
+    int i;
+    int j;
+    char bufferApellido[TEXT_SIZE];
+    int bufferId;
+    int bufferIsEmpty;
+
+    int bufferEdad;
+    int bufferidInstrumento;
+    int bufferidOrquesta;
+    char bufferNombre[TEXT_SIZE];
+
+    if(array!=NULL && size>=0)
+    {
+        for (i=1;i<size;i++)
+        {
+            strncpy(bufferApellido,array[i].apellido,sizeof(array[i].apellido));
+            bufferId=array[i].idUnico;
+            bufferIsEmpty=array[i].isEmpty;
+
+            bufferEdad=array[i].edad;
+            bufferidInstrumento=array[i].idInstrumento;
+            bufferidOrquesta=array[i].idOrquesta;
+            strcpy(bufferNombre,array[i].nombre);
+
+
+            j = i - 1;
+            while ((j >= 0) && strcmp(bufferApellido,array[j].apellido)<0)
+            {
+                strncpy(array[j + 1].apellido,array[j].apellido,sizeof(array[j + 1].apellido));
+                array[j + 1].idUnico=array[j].idUnico;
+                array[j + 1].isEmpty=array[j].isEmpty;
+
+                array[j + 1].edad=array[j].edad;
+                array[j + 1].idInstrumento=array[j].idInstrumento;
+                array[j + 1].idOrquesta=array[j].idOrquesta;
+                strncpy(array[j + 1].nombre,array[j].nombre,sizeof(array[j + 1].nombre));
+
+                j--;
+            }
+            strncpy(array[j + 1].apellido,bufferApellido,sizeof(array[j + 1].apellido));
+            array[j + 1].idUnico=bufferId;
+            array[j + 1].isEmpty=bufferIsEmpty;
+
+            array[j + 1].edad=bufferEdad;
+            array[j + 1].idInstrumento=bufferidInstrumento;
+            array[j + 1].idOrquesta=bufferidOrquesta;
+            strncpy(array[j + 1].nombre,bufferNombre,sizeof(array[j + 1].nombre));
+        }
+        retorno=0;
     }
     return retorno;
 }

@@ -13,8 +13,6 @@
 int main()
 {
     int opcion;
-    int flag=-1;
-    int flad=-1;
     int contadorIdOrquesta=0;
     int contadorIdMusico=0;
     int contadorIdInstrumento=0;
@@ -68,19 +66,19 @@ int main()
     arrayOrquesta[1].idUnico = 2;
     arrayOrquesta[1].isEmpty = 0;
     strcpy(arrayOrquesta[1].nombre,"Orquesta2");
-    strcpy(arrayOrquesta[1].lugar,"Lugar2");
+    strcpy(arrayOrquesta[1].lugar,"Lugar1");
     arrayOrquesta[1].tipo = 2;
 
     arrayOrquesta[2].idUnico = 3;
     arrayOrquesta[2].isEmpty = 0;
     strcpy(arrayOrquesta[2].nombre,"Orquesta3");
-    strcpy(arrayOrquesta[2].lugar,"Lugar3");
+    strcpy(arrayOrquesta[2].lugar,"Lugar2");
     arrayOrquesta[2].tipo = 3;
 
     arrayOrquesta[3].idUnico = 4;
     arrayOrquesta[3].isEmpty = 0;
     strcpy(arrayOrquesta[3].nombre,"Orquesta4");
-    strcpy(arrayOrquesta[3].lugar,"Lugar4");
+    strcpy(arrayOrquesta[3].lugar,"Lugar3");
     arrayOrquesta[3].tipo = 3;
 
     //Hardcode Musico
@@ -141,7 +139,6 @@ int main()
         {
             case 1: //Alta orquest
                 orquesta_alta(arrayOrquesta,CANTORQUEST,&contadorIdOrquesta);
-                flag=1;
                 break;
 
             case 2: //eliminar
@@ -156,7 +153,7 @@ int main()
                 break;
 
             case 4://alta musico
-              if(flad==1 && flag==1)
+              if(arrayInstrumento[0].isEmpty == 0 &&  arrayOrquesta[0].isEmpty == 0)
               {
                 musico_alta(arrayMusico,arrayOrquesta,arrayInstrumento,CANTMUSIC,&contadorIdMusico);
               }
@@ -180,45 +177,53 @@ int main()
 
             case 8: //agregar instrumento
                 instrumento_alta(arrayInstrumento,CANTINSTRUM,&contadorIdInstrumento);
-                flad=1;
                 break;
 
             case 9://imprimir
-               instrumento_listar(arrayInstrumento,CANTINSTRUM);
+                instrumento_listar(arrayInstrumento,CANTINSTRUM);
                 break;
 
             case 10://informes
 
-                utn_getUnsignedInt("\n 1)Orquestas con mas de 5\n2)listar menores a 30\n3buscar por lugar\n",
+                utn_getUnsignedInt(" 1)Orquestas con mas de 5\n2)Listar menores a 30\n3)Buscar por lugar\n4)Orquesta completa\n5)Mostrar musicos de una orquesta\n6)Orquestas con mas musicos\n7)Musicos que toquen instrumento de cuerdas\n8)Promedio de musicos por orquestas",
                       "\nError",1,sizeof(int),1,11,1,&opcion);
 
                 switch(opcion)
                     {
                     case 1:
-                    informes_listarOrquestasMasDe(arrayOrquesta,arrayMusico,CANTORQUEST,CANTMUSIC);
-                    break;
+                        informes_listarOrquestasMasDe(arrayOrquesta,arrayMusico,CANTORQUEST,CANTMUSIC);
+                        break;
                     case 2:
-                    informes_musicosMenoresA(arrayMusico,arrayInstrumento,arrayOrquesta,CANTMUSIC,CANTORQUEST,CANTINSTRUM);
-                    break;
+                        informes_musicosMayoresA(arrayMusico,arrayInstrumento,arrayOrquesta,CANTMUSIC,CANTORQUEST,CANTINSTRUM);
+                        break;
                     case 3:
-                    utn_getAlfanumerico("ingrese lugar a buscar","EROR",1,10,2,buscar);
-                    informes_buscarlugar(arrayOrquesta,CANTORQUEST,buscar);
-                    break;
+                        utn_getAlfanumerico("ingrese lugar a buscar","EROR",1,10,2,buscar);
+                        informes_buscarlugar(arrayOrquesta,CANTORQUEST,buscar);
+                        break;
                     case 4:
-                    break;
+                        informes_mostrarOrquestaCompleta(arrayOrquesta,CANTORQUEST,arrayMusico, CANTMUSIC,arrayInstrumento,CANTINSTRUM);
+                        break;
                     case 5:
-                    break;
+                        informes_mostarMusicoPorUnaOrquesta(arrayOrquesta,CANTORQUEST,arrayMusico,CANTMUSIC,arrayInstrumento,CANTINSTRUM);
+                        break;
+                    case 6:
+                        informes_orquestaConMasMusicos(arrayOrquesta,CANTORQUEST,arrayMusico,CANTMUSIC);
 
+                        break;
+                    case 7:
+                        informes_musicosDeCuerdas(arrayMusico,CANTMUSIC, arrayInstrumento,CANTINSTRUM);
 
+                        break;
+                    case 8:
+                        informes_promedioMusicosPorOrquesta( arrayOrquesta,CANTORQUEST,arrayMusico,CANTMUSIC);
 
+                        break;
                     default:
                       printf("\nOpcion no valida");
                     }
             break;
-
             case 11:
             break;
-
             default:
             printf("\nOpcion no valida");
 
@@ -227,3 +232,5 @@ int main()
     while(opcion!=11);
     return 0;
 }
+
+

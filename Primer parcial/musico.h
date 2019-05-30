@@ -29,6 +29,9 @@ int musico_baja(Musico array[], int sizeArray);
 int musico_modificar(Musico array[], int sizeArray);
 int musico_listar(Musico array[], int size);
 int musico_bajaPorOrquesta(Musico array[], int sizeArray, int idAEliminar);
+int musico_cantidadDeMusicos(Musico array[], int size);
+int musico_ordenarPorApellido(Musico array[],int size);
+
 
 
 

@@ -12,18 +12,18 @@
 
 1558045149 /home/alumno/Primer Parcial/Primer parcial/musico.h
 
-1558496461 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\instrumento.c
+1559181179 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\instrumento.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"utn.h"
 	"instrumento.h"
 
-1558494942 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\utn.h
+1559163887 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\utn.h
 
-1558496461 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\instrumento.h
+1559163887 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\instrumento.h
 
-1558494942 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\main.c
+1559180326 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\main.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -31,14 +31,15 @@
 	"musico.h"
 	"instrumento.h"
 	"orquesta.h"
+	"informes.h"
 
-1558508051 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\musico.h
+1559173998 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\musico.h
 	"orquesta.h"
 	"instrumento.h"
 
-1558508398 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\orquesta.h
+1559175268 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\orquesta.h
 
-1558508055 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\musico.c
+1559183987 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\musico.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -47,16 +48,21 @@
 	"orquesta.h"
 	"instrumento.h"
 
-1558508386 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\orquesta.c
+1559180767 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\orquesta.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"utn.h"
 	"orquesta.h"
 
-1558494942 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\utn.c
+1559163887 source:c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"utn.h"
+
+1559180077 c:\users\tomas\desktop\asdca\primer-parcial\primer parcial\informes.h
+	"orquesta.h"
+	"musico.h"
+	"instrumento.h"
 

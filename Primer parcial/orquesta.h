@@ -25,4 +25,6 @@ int orquesta_alta(Orquesta array[], int size, int* contadorID);
 int orquesta_baja(Orquesta array[], int sizeArray, int* IDborrada);
 int orquesta_modificar(Orquesta array[], int sizeArray);
 int orquesta_listar(Orquesta array[], int size);
+int orquesta_cantidadDeOrquestas(Orquesta array[], int size);
+
 

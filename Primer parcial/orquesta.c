@@ -5,12 +5,11 @@
 #include "orquesta.h"
 
 
-/** \brief  To indicate that all position in the array are empty,
-*          this function put the flag (isEmpty) in TRUE in all
-*          position of the array
-* \param array orquesta Array of orquesta
-* \param size int Array length
-* \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
+
+/** \brief Incializa el isEmpty en 1 para que indique que este vacio
+* \param array orquesta Array de orquesta
+* \param size int Array tamaño
+* \return int Retorno (-1) si es Error - (0) si esta bien
 *
 */
 int orquesta_Inicializar(Orquesta array[], int size)
@@ -27,9 +26,7 @@ int orquesta_Inicializar(Orquesta array[], int size)
     return retorno;
 }
 
-//*****************************************
-//Buscar
-//Int
+
 /** \brief Busca el primer lugar vacio en un array
 * \param array orquesta Array de orquesta
 * \param size int Tamaño del array
@@ -83,8 +80,7 @@ int orquesta_buscarID(Orquesta array[], int size, int valorBuscado, int* posicio
     return retorno;
 }
 
-//*****************************************
-//Alta
+
 /** \brief Solicita los datos para completar la primer posicion vacia de un array
 * \param array orquesta Array de orquesta
 * \param size int Tamaño del array
@@ -118,8 +114,7 @@ int orquesta_alta(Orquesta array[], int size, int* contadorID)
     return retorno;
 }
 
-//*****************************************
-//Baja valor unico
+
 /** \brief Borra un elemento del array por ID
 * \param array orquesta Array de orquesta
 * \param size int Tamaño del array
@@ -156,8 +151,6 @@ int orquesta_baja(Orquesta array[], int sizeArray, int* IDborrada)
 
 
 
-//*****************************************
-//Modificar
 /** \brief Busca un elemento por ID y modifica sus campos
 * \param array orquesta Array de orquesta
 * \param size int Tamaño del array
@@ -209,8 +202,7 @@ int orquesta_modificar(Orquesta array[], int sizeArray)
 
 
 
-//*****************************************
-//Listar
+
 /** \brief Lista los elementos de un array
 * \param array orquesta Array de orquesta
 * \param size int Tamaño del array
@@ -232,15 +224,15 @@ int orquesta_listar(Orquesta array[], int size)
                        array[i].idUnico,array[i].nombre,array[i].lugar,array[i].tipo);
                         switch(array[i].tipo)
                        {
-                        case 1:
-                        printf("Sinfonica");
-                        break;
-                        case 2:
-                        printf("Filarmonica");
-                        break;
-                        case 3:
-                        printf("Camara");
-                        break;
+                            case 1:
+                            printf("Sinfonica");
+                            break;
+                            case 2:
+                            printf("Filarmonica");
+                            break;
+                            case 3:
+                            printf("Camara");
+                            break;
                        }
         }
         retorno=0;
@@ -248,3 +240,24 @@ int orquesta_listar(Orquesta array[], int size)
     return retorno;
 }
 
+/** \brief Cuenta la cantidad de orquestas que estan dadas de alta
+ *
+ * \param array Orquesta array de Orquestas
+ * \param int size tamaño del array
+ * \return retorna la cantidad de orquestas dada de alta
+ *
+ */
+
+int orquesta_cantidadDeOrquestas(Orquesta array[], int size)
+{
+    int i;
+    int cantidadDeOrquestas=0;
+    for (i=0;i<size;i++)
+    {
+        if (!array[i].isEmpty)
+        {
+            cantidadDeOrquestas++;
+        }
+    }
+    return cantidadDeOrquestas;
+}

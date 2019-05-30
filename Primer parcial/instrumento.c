@@ -5,12 +5,10 @@
 #include "instrumento.h"
 
 
-/** \brief  To indicate that all position in the array are empty,
-*          this function put the flag (isEmpty) in TRUE in all
-*          position of the array
-* \param array instrumento Array of instrumento
-* \param size int Array length
-* \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
+/** \brief Incializa el isEmpty en 1 para que indique que este vacio
+* \param array Instrumento Array de instrumentos
+* \param size int Array tamaño
+* \return int Retorno (-1) si es Error - (0) si esta bien
 *
 */
 int instrumento_Inicializar(Instrumento array[], int size)
@@ -27,7 +25,7 @@ int instrumento_Inicializar(Instrumento array[], int size)
     return retorno;
 }
 
-//*****************************************
+
 
 /** \brief Busca el primer lugar vacio en un array
 * \param array instrumento Array de instrumento
@@ -85,8 +83,7 @@ int instrumento_buscarID(Instrumento array[], int size, int valorBuscado, int* p
 
 
 
-//*****************************************
-//Alta
+
 /** \brief Solicita los datos para completar la primer posicion vacia de un array
 * \param array instrumento Array de instrumento
 * \param size int Tamaño del array
@@ -119,15 +116,13 @@ int instrumento_alta(Instrumento array[], int size, int* contadorID)
     return retorno;
 }
 
-//*****************************************
-//Baja valor unico
 /** \brief Borra un elemento del array por ID
 * \param array instrumento Array de instrumento
 * \param size int Tamaño del array
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se elimina el elemento exitosamente
 *
 */
-int instrumento_baja(Instrumento array[], int sizeArray)                                      //cambiar instrumento
+int instrumento_baja(Instrumento array[], int sizeArray)
 {
     int retorno=-1;
     int posicion;
@@ -151,7 +146,7 @@ int instrumento_baja(Instrumento array[], int sizeArray)                        
     return retorno;
 }
 
-//Baja valor repetido
+
 /** \brief Borra todos los elemento del array que contengan el valor buscado
 * \param array instrumento Array de instrumento
 * \param size int Tamaño del array
@@ -159,7 +154,7 @@ int instrumento_baja(Instrumento array[], int sizeArray)                        
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se elimina el elemento exitosamente
 *
 */
-int instrumento_bajaValorRepetidoInt(Instrumento array[], int sizeArray, int valorBuscado) //cuando hay que dar de baja todas las posiciones en las que se encuentra ese int
+int instrumento_bajaValorRepetidoInt(Instrumento array[], int sizeArray, int valorBuscado)
 {
     int retorno=-1;
     int i;
@@ -182,8 +177,7 @@ int instrumento_bajaValorRepetidoInt(Instrumento array[], int sizeArray, int val
 
 
 
-//*****************************************
-//Modificar
+
 /** \brief Busca un elemento por ID y modifica sus campos
 * \param array instrumento Array de instrumento
 * \param size int Tamaño del array
@@ -232,8 +226,7 @@ int instrumento_modificar(Instrumento array[], int sizeArray)
 }
 
 
-//*****************************************
-//Listar
+
 /** \brief Lista los elementos de un array
 * \param array instrumento Array de instrumento
 * \param size int Tamaño del array
